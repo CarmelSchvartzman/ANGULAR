@@ -29,7 +29,7 @@ export class DisplayEmployeeComponent implements OnInit {
   }
 
   handleClick() {
-    this.notify.emit(this.employee);   <<<<<<<<<<<<<<<<<<<<<<
+    this.notify.emit(this.employee);   <<<<<<<<<<<<<<<
   }
 }
 ////////////////////////////////////////////////////////////////////////////
@@ -40,9 +40,17 @@ ON PARENT COMPONENT :
 </h1>
 <div *ngFor="let employee of employees">
     <app-display-employee [employee]="employee"
-                          (notify)="handleNotify($event)">
+                          (notify)="handleNotify($event)">    <<<<<<<<<<<
     </app-display-employee>
 </div>
+
+
+handleNotify(eventData: Employee) {    
+  this.dataFromChild = eventData;              <<<<<<<<<<<<<
+} 
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 
 
