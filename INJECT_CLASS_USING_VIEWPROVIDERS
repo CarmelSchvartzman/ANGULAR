@@ -1,0 +1,26 @@
+class Greeter {
+   greet(name:string) {
+     return 'Hello ' + name + '!';
+   }
+}
+ 
+@Directive({
+  selector: 'needs-greeter'
+})
+class NeedsGreeter {
+  greeter:Greeter;
+ 
+  constructor(greeter:Greeter) {
+    this.greeter = greeter;
+  }
+}
+ 
+@Component({
+  selector: 'greet',
+  viewProviders: [
+    Greeter
+  ],
+  template: `<needs-greeter></needs-greeter>`
+})
+class HelloWorld {
+}
