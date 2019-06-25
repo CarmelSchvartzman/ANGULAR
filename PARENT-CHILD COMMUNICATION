@@ -1,0 +1,50 @@
+// You can only pass one value using EventEmitter. If you want to pass more than one value using EventEmitter use a custom type :
+@Output() notify: EventEmitter<string> = new EventEmitter<string>();
+@Output() notify: EventEmitter<number> = new EventEmitter<number>(); 
+@Output() notify: EventEmitter<any> = new EventEmitter<any>();
+@Output() notify: EventEmitter<Employee> = new EventEmitter<Employee>();
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+ON CHILD COMPONENT :
+
+<div class="panel panel-primary" (click)="handleClick()">
+
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';   <<<<<<<<<<<<<<<<<<
+import { Employee } from '../models/employee.model';
+
+@Component({
+  selector: 'app-display-employee',
+  templateUrl: './display-employee.component.html',
+  styleUrls: ['./display-employee.component.css']
+})
+export class DisplayEmployeeComponent implements OnInit {
+  @Input() employee: Employee;
+  @Output() notify: EventEmitter<Employee> = new EventEmitter<Employee>(); <<<<<<<<<<<<
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+  handleClick() {
+    this.notify.emit(this.employee);   <<<<<<<<<<<<<<<<<<<<<<
+  }
+}
+////////////////////////////////////////////////////////////////////////////
+ON PARENT COMPONENT :
+
+<h1 *ngIf="dataFromChild">
+    {{ dataFromChild?.name + ' ' + dataFromChild?.gender }}
+</h1>
+<div *ngFor="let employee of employees">
+    <app-display-employee [employee]="employee"
+                          (notify)="handleNotify($event)">
+    </app-display-employee>
+</div>
+
+
+
+
+
