@@ -1,11 +1,27 @@
+// There are 2 ways to pass data from Child Component to Parent Component :
+ 
+@@@@@@@@  Template Reference Variable  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+<h1 #h1Variable></h1>
+
+<div *ngFor="let employee of employees">
+  <div (click)="h1Variable.innerHTML = childComponent.employee.name + ' ' + childComponent.employee.gender">
+    <app-employee-display [employee]="employee" #childComponent>
+    </app-employee-display>
+  </div>
+</div>
+
+
+
+
+
+@@@@@@@@  Output Properties @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // You can only pass one value using EventEmitter. If you want to pass more than one value using EventEmitter use a custom type :
 @Output() notify: EventEmitter<string> = new EventEmitter<string>();
 @Output() notify: EventEmitter<number> = new EventEmitter<number>(); 
 @Output() notify: EventEmitter<any> = new EventEmitter<any>();
 @Output() notify: EventEmitter<Employee> = new EventEmitter<Employee>();
 
-
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 ON CHILD COMPONENT :
 
@@ -51,7 +67,7 @@ handleNotify(eventData: Employee) {
 
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
+http://csharp-video-tutorials.blogspot.com/2018/04/call-child-component-methods-and.html
 
 
 
