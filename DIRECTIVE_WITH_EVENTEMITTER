@@ -1,0 +1,24 @@
+@Directive({selector: 'app-interval-dir', outputs: ['everySecond', 'fiveSecs: everyFiveSeconds']})
+export class IntervalDirComponent {
+  everySecond = new EventEmitter<string>();
+  fiveSecs = new EventEmitter<string>();
+ 
+  constructor() {
+    setInterval(() => this.everySecond.emit('event'), 1000);
+    setInterval(() => this.fiveSecs.emit('event'), 5000);
+  }
+}
+ 
+@Component({
+  selector: 'app-my-output',
+  template: `
+    <app-interval-dir
+      (everySecond)="onEverySecond()"
+      (everyFiveSeconds)="onEveryFiveSeconds()">
+    </app-interval-dir>
+  `
+})
+export class MyOutputComponent {
+  onEverySecond() { console.log('second'); }
+  onEveryFiveSeconds() { console.log('five seconds'); }
+}
