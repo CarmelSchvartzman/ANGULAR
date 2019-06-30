@@ -1,0 +1,29 @@
+http://csharp-video-tutorials.blogspot.com/2017/05/setting-up-angular-2-in-visual-studio.html
+
+NODEJS:
+msinfo32 
+https://nodejs.org/en/download/
+
+
+VISUALSTUDIO2015 UPDATE 3
+http://download.microsoft.com/download/e/b/c/ebc2c43f-3821-4a0b-82b1-d05368af1604/vs2015.3.pro_enu.iso
+
+
+$(PATH)
+In the right pane, move the global $(PATH) entry to be above the internal path $(DevEnvDir) entries. This tells Visual Studio to look for external tools (like npm) in the global path before the internal path.
+Click "OK" to close the "Options" window and then restart Visual Stduio for the changes to take effect
+
+
+TYPESCRIPT
+https://www.microsoft.com/en-us/download/details.aspx?id=48593
+
+START FILES:
+https://github.com/angular/quickstart
+
+src folder and it's contents
+bs-config.json
+package.json
+tslint.json
+
+Restore the required packages + npm start
+
