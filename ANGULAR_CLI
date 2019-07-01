@@ -1,0 +1,8 @@
+ng new MyProject --skip-tests true
+
+npm install bootstrap@4 --save
+
+code .
+
+ng serve
+
