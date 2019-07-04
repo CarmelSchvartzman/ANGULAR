@@ -1,0 +1,9 @@
+Services should be stateless
+Stateful services, i.e. services which store temporary information in private or even public variables, are hard to reason about and are typically a code smell. Various issues arise when using stateful services:
+
+What happens when the service is used by two components on the same page?
+Is the state correctly reset at some point?
+Is memory being leaked?
+Is the page bookmarkable?
+Are the browser controls, i.e. forward and backward buttons, behaving the way they are supposed to?
+How can the service be unit tested?
