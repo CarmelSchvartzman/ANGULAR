@@ -1,4 +1,4 @@
-
+https://medium.com/@jtomaszewski/how-to-write-good-composable-and-pure-components-in-angular-2-1756945c0f5b
 
 ////// SMART (impure) : side effects + retrieve data + modify input
 
