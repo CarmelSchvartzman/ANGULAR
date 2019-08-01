@@ -14,7 +14,7 @@
             <div class='form-group' >
               <label for='txtID' class='col-md-2'>Id of user : </label>
               <div class='col-md-10' >
-                <input id='txtID' name='txtID' class='form-control' [(ngModel)]='id'  />
+                <input id='txtID' name='txtID' class='form-control' [(ngModel)]='id'  />         <<<<<<<<<<<<<<<<<<
               </div>
             </div><br><br>
             <div class='form-group' >
@@ -32,7 +32,7 @@
 })
 export class NavOrigComponent implements OnInit {
   id = 7;
-  constructor(private router: Router) { }
+  constructor(private router: Router) { }       <<<<<<<<<<<<<<<<<<
 
   ngOnInit() {
 
@@ -40,7 +40,7 @@ export class NavOrigComponent implements OnInit {
 
   fnSend(): void {
 
-    this.router.navigate(['NavCible/:' + this.id]);
+    this.router.navigate(['NavCible/:' + this.id]);       <<<<<<<<<<<<<<<<<<
 
   }
 }
@@ -64,11 +64,11 @@ export class NavOrigComponent implements OnInit {
 export class NavCibleComponent implements OnInit {
   query: number;
 
-  constructor(private params: ActivatedRoute) { }
+  constructor(private params: ActivatedRoute) { }       <<<<<<<<<<<<<<<<<<
 
   ngOnInit() {
 
-    const n = this.params.snapshot.paramMap.get('id');
+    const n = this.params.snapshot.paramMap.get('id');       <<<<<<<<<<<<<<<<<<
     this.query = +n.substring(1, n.length);
   }
 
