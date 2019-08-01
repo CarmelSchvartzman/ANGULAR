@@ -1,0 +1,75 @@
+
+ { path: 'NavCible/:id', component: NavCibleComponent, pathMatch: 'full' }
+
+
+//////  SOURCE :
+
+@Component({
+  selector: 'app-nav-orig',
+  template: `
+    <div class='container' >
+      <div class='row' >
+        <div class='col-md-12' >
+          <form class='' >
+            <div class='form-group' >
+              <label for='txtID' class='col-md-2'>Id of user : </label>
+              <div class='col-md-10' >
+                <input id='txtID' name='txtID' class='form-control' [(ngModel)]='id'  />
+              </div>
+            </div><br><br>
+            <div class='form-group' >
+              <label for='txtID' class='col-md-2'> </label>
+              <div class='col-md-10' >
+                <input type='button' id='txtID' (click)='fnSend()' class='btn btn-primary' value='Send ID' />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  `,
+  styles: []
+})
+export class NavOrigComponent implements OnInit {
+  id = 7;
+  constructor(private router: Router) { }
+
+  ngOnInit() {
+
+  }
+
+  fnSend(): void {
+
+    this.router.navigate(['NavCible/:' + this.id]);
+
+  }
+}
+
+
+
+
+
+
+//////   TARGET :
+
+@Component({
+  selector: 'app-nav-cible',
+  template: `
+    <div class='well'>
+      {{query}}
+    </div>
+  `,
+  styles: []
+})
+export class NavCibleComponent implements OnInit {
+  query: number;
+
+  constructor(private params: ActivatedRoute) { }
+
+  ngOnInit() {
+
+    const n = this.params.snapshot.paramMap.get('id');
+    this.query = +n.substring(1, n.length);
+  }
+
+}
