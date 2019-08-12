@@ -24,7 +24,10 @@ export class SObsService {
 
     return new Observable((observer) => {                  <<<<<<<<<<<<<<<<<<
 
-      observer.next('Value from Observable : ' + res);     <<<<<<<<<<<<<<<<<<
+      let c = 1;
+      observer.next('Value from Observable1 : ' + c++);
+      observer.next('Value from Observable2 : ' + c++);
+      observer.next('Value from Observable3 : ' + c++);     <<<<<<<<<<<<<<<<<<
 
       observer.complete();     <<<<<<<<<<<<<<<<<<
 
@@ -45,12 +48,13 @@ import { SObsService } from './s-obs.service';
   providers: [SObsService]                <<<<<<<<<<<<<<<<<<
 })
 export class CMyObsCComponent implements OnInit {
-  ret: string;
+   ret = [];
   
   constructor(private _svc: SObsService) { }     <<<<<<<<<<<<<<<<<<
 
   ngOnInit() {
-    this._svc.GetData('Original value').subscribe((res) => { this.ret = res; }, (e) => { alert(e); });      <<<<<<<<<<<<<<<<<<
+    this._svc.GetData('Original value')
+.subscribe((res) => { this.ret.unshift(res as string); }, (e) => { alert(e); }, () => { alert('FINISHED!!'); })      <<<<<<<<<<<<<<<<<<
   }
 }
 
