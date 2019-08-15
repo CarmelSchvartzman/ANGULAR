@@ -1,3 +1,4 @@
+////////////  Images & explanations : https://angularjsclub.blogspot.com/2019/08/how-to-create-reusable-widgets-using.html
 ///  ng g c shared/reusableComponent --flat -t -s -m app.module -d
 ///  ng g c parentFolder/parentComponent --flat -t -s -m app.module -d
 
