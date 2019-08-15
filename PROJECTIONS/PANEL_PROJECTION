@@ -1,0 +1,55 @@
+///  ng g c shared/reusableComponent --flat -t -s -m app.module -d
+///  ng g c parentFolder/parentComponent --flat -t -s -m app.module -d
+
+////////////   reusable Component  :
+
+import { Component, OnInit, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-widget',
+  template: `
+  <div class='centered'>
+    <div class='panel panel-info ' [class.well]='IsHidden'>
+      <div class='panel-heading clickable' (click)='fnOnClick()'>
+        <strong>
+          <ng-content select='.TITLE_01'></ng-content>           <<<<<<<<<<<<<<<<<<<<<  INPUT
+        </strong>
+      </div>
+      <div class='panel-body' [hidden]='IsHidden'>
+        <ng-content select='.CONTENT_01'></ng-content>           <<<<<<<<<<<<<<<<<<<<<  INPUT
+      </div>
+      <div class='panel-footer' [hidden]='IsHidden'>
+        <ng-content select='.CONTENT_02'></ng-content>           <<<<<<<<<<<<<<<<<<<<<  INPUT
+        <code>(This was called "Transclusion" in AngularJS)</code>
+      </div>
+    </div>
+  </div>
+  `,
+  styles: ['.centered{display:flex;justify-content:center;} .clickable{cursor:pointer;}']
+})
+export class WidgetComponent {
+  @Input() IsHidden: boolean;                <<<<<<<<<<<<<<<<<<<<<  INPUT
+
+  fnOnClick(): void {
+
+    this.IsHidden = !this.IsHidden;
+
+  }
+}
+/////////////  parent component :
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-parent',
+  template: `
+    <p>
+      <app-widget [IsHidden]='true'>          <<<<<<<<<<<<<<<<<<<<<  OUTPUT
+        <div class='TITLE_01'>This  is  an  example  of  Angular  Component  Projection</div>         <<<<<<<<<<<<<<<<<<<<<  OUTPUT
+        <div class='CONTENT_01'>This first content comes from the Container Component.</div>         <<<<<<<<<<<<<<<<<<<<<  OUTPUT
+        <div class='CONTENT_02'>This second content also comes from the Container Component.</div>      <<<<<<<<<<<<<<<<<<<<<  OUTPUT
+      </app-widget>
+    </p>
+  `
+})
+export class ParentComponent {}
+
