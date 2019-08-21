@@ -1,0 +1,8 @@
+///  CLI DOCS : https://angular.io/cli/build
+
+ng serve --base-href /friends/
+
+
+ng build --prod --base-href /friends/
+
+
