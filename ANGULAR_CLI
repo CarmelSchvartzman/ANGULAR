@@ -4,5 +4,15 @@ npm install bootstrap@4 --save
 
 code .
 
-ng serve
+ng serve -o
+
+ng g c friends/listFriends --skip-tests true -s -t -m app.module -d
+
+ng g cl friends/Friends -m app.module -d
+
+
+
+
+
+
 
