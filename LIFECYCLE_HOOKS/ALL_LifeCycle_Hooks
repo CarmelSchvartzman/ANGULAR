@@ -1,0 +1,79 @@
+/////////////////    http://embed.plnkr.co/iJeBzvMzsXsJH3SKJKZJ/
+////////////////   https://www.stackchief.com/blog/ngOnChanges%20Example%20%7C%20Angular
+
+import { Component, Input } from '@angular/core';
+
+
+////////////   CHILD COMPONENT :      /////////////////////////////////////////////////////
+
+@Component({
+  selector: 'my-component',
+  template: `
+  LifeCycle Hooks
+  {{message}}
+  <ng-content></ng-content>
+  `
+})
+export class MyComponent{
+  @Input() message;
+  
+  constructor(){
+    console.log(`constructor`);
+  }
+  
+  ngOnInit(){
+    console.log(`ngOnInit`);
+  }
+  
+  ngAfterViewInit(){
+    console.log(`ngAfterViewInit`);
+  }
+  
+  ngAfterContentInit(){
+    console.log(`ngAfterContentInit`);
+  }
+  
+  ////////////////   CALLED  whenever a component's bound input is changed FROM THE PARENT COMPONENT :
+  ////////////////   if you don't have any @Input properties on a child, ngOnChanges will never get called !!!!  :
+  ngOnChanges(changes: SimpleChanges){   ///  Use ngOnChanges whenever you want to detect changes from a variable decorated by @Input. 
+    console.log(changes);
+  }
+  
+  ngDoCheck(){
+    //great article on writing custom logic when things change
+    //http://teropa.info/blog/2016/03/06/writing-an-angular-2-template-directive.html
+    console.log(`ngDoCheck`);
+  }
+  
+  ngAfterContentChecked(){
+    console.log(`ngAfterContentChecked`);
+  }
+  
+  ngAfterViewChecked(){
+    console.log(`ngAfterViewChecked
+    ---`);
+  }
+  
+  ngOnDestroy(){
+    console.log(`ngOnDestroy`);
+  }
+}
+
+
+
+////////////  PARENT COMPONENT :  //////////////////////////////////////////////
+@Component({
+  selector: 'my-app',
+  template: `
+  <h1>Check the Console for LifeCycle Hooks</h1>
+  <input [(ngModel)]="appMessage">
+  <my-component [message]="appMessage">
+    This is content: {{appMessage}}
+  </my-component>
+  `,
+  directives: [MyComponent]
+  
+})
+export class AppComponent { 
+  appMessage = "hello";
+}
