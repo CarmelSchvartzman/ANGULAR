@@ -1,0 +1,48 @@
+////////////  Place : 3 (after ngOnChanges & ngOnInit )
+
+//////////// Called for changes not detected by ngOnChanges :
+//////////// example : reference variable : the reference do not change, BUT an internal property does :
+
+////////////  CHILD :
+
+import { Component, OnInit, Input, ChangeDetectionStrategy, DoCheck, OnChanges } from '@angular/core';   
+@Component({
+  selector: 'app-child',
+  template: `Here is the user name: {{ user.name }}`,
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class ChildComponent implements OnInit {
+  @Input() user;                //<<<<<<<<<<<<<<<<<<<<< CHILD PROPERTY @INPUT DECLARATION
+  constructor() { }
+  ngOnInit() {
+  }
+  ngOnChanges(){
+    console.log("CHANGES")
+  }
+  ngDoCheck(){                       //<<<<<<<<<<<<<<<<<<<<<   ngDOCHECK
+    console.log("DO CHECK")
+  }
+}
+
+
+///////////////   PARENT :
+
+import { Component, OnInit } from '@angular/core';
+@Component({
+  selector: 'app-parent',
+  template: `<a (click)="updateUser()">Update</a><br/>
+              <app-child [user]="user"></app-child>`          //<<<<<<<<<<<<<<<<<<<<< 
+})
+export class ParentComponent implements OnInit {
+  user = {
+    name:"Alex"
+  }
+  constructor() { }
+  ngOnInit() {
+  }
+  updateUser(){
+    this.user.name = "ted"           //<<<<<<<<<<<<<<<<<<<<<  CHILD INTERNAL PROPERTY CHANGE  (NO REFERENCE CHANGE)
+  }
+}
+
+//////   https://www.stackchief.com/blog/ngDoCheck%20Example%20%7C%20Angular
