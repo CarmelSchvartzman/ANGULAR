@@ -1,0 +1,24 @@
+///////// how to solve the error "No directive with exportAs set to ngForm" while using Angular 7 :
+
+While declaring a variable on the View, to reference the Template Driven Form that we designed there, we would face an error , 
+at the moment Angular tries to assign the ngForm Directive to the template variable.
+
+The error just states "No directive with exportAs set to ngForm":
+
+The cause of the error is quite simple. Indeed, the error message states the problem specifically : 
+"No directive with exportAs set to ngForm".
+
+Remember that ngForm is a Directive . Also, you know that if you code a Directive, you must decorate it with the "export" word.  
+Therefore, Angular has not found the corresponding Directive, to bind it to the Template.
+
+In other words : "I could'nt find an ngForm directive with an 'export' definition".
+
+So that we do is to open the Module where your Component was declared,         <<<<<<<<<<<<<<<<<<<<<<<<<<<
+let's say the app.module for example, 
+and IMPORT there the FormsModule class, which is in '@angular/forms' .     <<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+The FormsModule class, as stated in its definitions, has as its objective to "Exports the required providers 
+and directives for template-driven forms".
+
+After you add this module in the "imports" section, delete and add again the Template variable, and the error will dissapear.
+
