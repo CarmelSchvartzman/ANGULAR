@@ -1,0 +1,82 @@
+/////////////////   BLOGGER : 
+/////////  CLI : 
+/////////
+/////////  ng g c lifecycle/child --flat true -s -t -m app.module -d
+/////////  ng g c lifecycle/parent --flat -t -s -m app.module -d
+
+/////////////////  CHILD : 
+
+import { Component, OnInit, Input, DoCheck, OnChanges, SimpleChanges } from '@angular/core';
+import { Friend } from '../models/friends';
+import { ComponentFactoryResolver } from '@angular/core/src/render3';
+
+@Component({
+  selector: 'app-child',
+  template: `
+    <p class='centered'> 
+      Data : {{data.name}}
+    </p>
+  `,
+  styles: [`.centered{display:flex;justify-content:center;}`]
+})
+export class ChildComponent implements  OnChanges, DoCheck {
+  @Input() data;
+
+
+  ngOnChanges(changes: SimpleChanges) {
+    // tslint:disable-next-line:forin
+    for (const propName in changes) {
+      const change = changes[propName];
+      const curVal = (change.currentValue);
+      const prevVal = (change.previousValue);
+      if (prevVal != null) {
+        console.warn(`ngOnChanges - PREVIOUS : ${prevVal.name} - CURRENT : ${curVal.name}`);
+      }
+    }
+  }
+
+  ngDoCheck() {
+    console.warn(`ngDoCheck data : ${this.data.name} .`);
+  }
+
+}
+
+
+
+
+///////////////// PARENT :
+
+
+import { Component, OnInit } from '@angular/core';
+import { Friend } from '../models/friends';
+
+@Component({
+  selector: 'app-parent',
+  template: `
+   <app-child id='child'  [data]='parentData'  ></app-child><br><br><br>
+   <div class='centered'>
+   <button class='btn btn-info ' (click)='ChangeData()'>Change Data</button>
+   </div>
+  `,
+  styles: [` .centered{display:flex; justify-content:center;}`]
+})
+export class ParentComponent implements OnInit {
+  parentData: Friend;
+
+
+  ngOnInit() {
+    this.parentData = new Friend();
+    this.parentData.name = 'Original Name';
+  }
+
+  ChangeData(): void {
+
+    // This change (IMPURE CHANGE) will trigger ONLY ngDoCheck : (because the reference was NOT changed)
+     this.parentData.name = 'Changed name';
+
+     // The following changes (PURE + IMPURE CHANGE) will trigger BOTH ngOnChange + ngDoCheck : (because the reference WAS changed)
+    // this.parentData = new Friend();
+   // this.parentData.name = 'NEW FRIEND NAME';
+  }
+
+}
