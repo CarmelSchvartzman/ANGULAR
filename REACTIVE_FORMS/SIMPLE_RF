@@ -1,0 +1,68 @@
+/////////////////  TEMPLATE :
+
+
+<section class="sample-app-content">
+    <h1>Model-based Form Example:</h1>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <p>
+            <label>First Name:</label>
+            <input type="text" formControlName="firstName">
+        </p>
+        <p>
+            <label>Password:</label>
+            <input type="password" formControlName="password">
+        </p>
+        <p>
+            <button type="submit" [disabled]="!form.valid">Submit</button>
+        </p>
+    </form>
+</section>
+
+
+
+
+///////////////// COMPONENT :
+
+
+
+import { FormGroup, FormControl, Validators, FormBuilder } 
+    from '@angular/forms';
+
+@Component({
+    selector: "model-driven-form",
+    templateUrl: 'model-driven-form.html'
+})
+export class ModelDrivenForm {
+    form: FormGroup;
+    
+    firstName = new FormControl("", Validators.required);
+    
+    constructor(fb: FormBuilder) {
+        this.form = fb.group({
+            "firstName": this.firstName,
+            "password":["", Validators.required]
+        });
+    }
+    onSubmitModelBased() {
+        console.log("model-based form submitted");
+        console.log(this.form);
+    }
+}
+
+////////////////////  MODULE :
+
+
+import {NgModule} from "@angular/core";
+import {ReactiveFormsModule} from "@angular/forms";
+
+@Component({...})
+export class App { }
+
+@NgModule({
+    declarations: [App],
+    imports: [BrowserModule, ReactiveFormsModule],
+    bootstrap: [App]
+})
+export class AppModule {}
+
+///////  https://blog.angular-university.io/introduction-to-angular-2-forms-template-driven-vs-model-driven/
