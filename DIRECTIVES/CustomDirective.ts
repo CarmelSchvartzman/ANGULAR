@@ -1,4 +1,4 @@
-//////////////////////////  BLOGGER : 
+//////////////////////////  BLOGGER : https://angularjsclub.blogspot.com/2019/08/how-to-code-custom-directive-to-use-as.html
 ////////////// (remember to includ in 'declarations' part of app.module)
 //////////////  DIRECTIVE 
 
