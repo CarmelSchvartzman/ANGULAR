@@ -1,0 +1,27 @@
+///////Use ngAfterContentInit to call something once after ALL OF THE CONTENT has been initialized (both locla content +  PROJECTIONS)
+///////  whenever the content which is projected through ng-content has been initialized
+
+///////  runs ONCE after ngOnInit and ngDoCheck
+
+import { Component, OnInit, AfterContentInit, DoCheck } from '@angular/core';
+
+@Component({
+  selector: 'app-home',
+  template: `<a (click)="clickMe()">Click me</a>`,   <<<<<<<<<<<<<<<<   the clickMe() function WILL NOT TRIGGER ngAfterContentInit()
+  styleUrls: ['./home.component.css']
+})
+export class HomeComponent implements OnInit {
+  constructor() { }
+  ngOnInit() {
+    console.log("onInit called")
+  }
+  ngDoCheck(){
+    console.log("do check")
+  }
+  ngAfterContentInit(){                            <<<<<<<<<<<<<<<<  
+    console.log("after content init");
+  }
+  clickMe(){
+    console.log("link clicked")
+  }
+}
