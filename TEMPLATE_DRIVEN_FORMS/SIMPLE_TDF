@@ -1,0 +1,68 @@
+/////////////  MODULE :
+
+
+import {NgModule} from "@angular/core";
+import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
+import {BrowserModule} from "@angular/platform-browser";
+import {FormsModule} from "@angular/forms";
+
+@Component({...})
+export class App { }
+
+@NgModule({
+    declarations: [App],
+    imports: [BrowserModule, FormsModule],
+    bootstrap: [App]
+})
+export class AppModule {}
+
+platformBrowserDynamic().bootstrapModule(AppModule);
+
+
+
+
+
+
+//////////// TEMPLATE :
+
+
+<section class="sample-app-content">
+    <h1>Template-driven Form Example:</h1>
+    <form #f="ngForm" (ngSubmit)="onSubmitTemplateBased()">
+        <p>
+            <label>First Name:</label>
+            <input type="text"  
+                [(ngModel)]="user.firstName" required>
+        </p>
+        <p>
+            <label>Password:</label>
+            <input type="password"  
+                [(ngModel)]="user.password" required>
+        </p>
+        <p>
+            <button type="submit" [disabled]="!f.valid">Submit</button>
+        </p>
+    </form>
+</section>
+
+
+//////////////  COMPONENT :
+
+
+@Component({
+    selector: "template-driven-form",
+    templateUrl: 'template-driven-form.html'
+})
+export class TemplateDrivenForm {
+
+    user: Object = {};
+
+    onSubmitTemplateBased() {
+        console.log(this.vm);
+    }
+
+}
+
+
+
+/////////////////  https://blog.angular-university.io/introduction-to-angular-2-forms-template-driven-vs-model-driven/
