@@ -1,5 +1,5 @@
 //////////////////////////  BLOGGER : https://angularjsclub.blogspot.com/2019/08/how-to-code-custom-directive-to-use-as.html
-////////////// (remember to includ in 'declarations' part of app.module)
+////////////// (remember to include the directive in 'declarations' part of app.module)
 //////////////  DIRECTIVE 
 
 import { Directive, Input, ElementRef } from '@angular/core';
@@ -26,7 +26,7 @@ export class ColorDirective {
  <div class="form-group">
 
           Using a custom Directive as attribute of a DOM element :
-        <label appColored='lightgreen'  for="city">
+        <label appColored='lightgreen'  for="city">                           <<<<<<<<<<<<<<<<<<<<<<<
           City
         </label>
         <select  appColored='lightgray'   class="form-control" name="city" id="city" [(ngModel)]='city'>
@@ -37,4 +37,8 @@ export class ColorDirective {
         </select>
 
       </div>
- <b><appColored appColored='lightblue'>Using a custom Directive as DOM element!</appColored></b>
+ <b><appColored appColored='lightblue'>Using a custom Directive as DOM element!</appColored></b>   <<<<<<<<<<<<<<<<<<<<<<<
+   
+   
+   
+   
