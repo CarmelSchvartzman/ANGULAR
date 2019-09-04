@@ -1,0 +1,68 @@
+//////////  REUSABLE PROJECTION :
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-projection',
+  template: `
+  <div class='centered'>
+  <div class='panel panel-info ' >
+    <div class='panel-heading clickable'  >
+      <strong>
+                 <ng-content></ng-content>             <<<<<<<<<<<<<<<<<<<<<<<<<
+      </strong>
+    </div>   
+  </div>
+</div>
+  `,
+  styles: []
+})
+export class ProjectionComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+
+
+////////////////////////////////  PARENT :
+
+import { Component, OnInit, AfterContentInit, OnChanges, SimpleChanges, DoCheck } from '@angular/core';
+
+@Component({
+  selector: 'app-container',
+  template: `
+    <p>
+      container works!
+    </p>
+    <div>
+    <app-projection>            <<<<<<<<<<<<<<<<<<<<<<<<<
+        Container Contents
+    </app-projection>
+    </div>
+  `,
+  styles: []
+})
+export class ContainerComponent implements OnChanges, OnInit, DoCheck, AfterContentInit {
+  ngDoCheck(): void {
+     alert('ngDoCheck');
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+     alert('ngOnChanges');
+  }
+
+  constructor() { alert('constructor');}
+
+  ngOnInit() {alert('ngOnInit');
+  }
+
+  ngAfterContentInit() {          /////  https://www.c-sharpcorner.com/article/angular-5-lifecycle-hooks-part-two/
+    alert('ngAfterContentInit');
+
+
+  }
+
+}
+/////////////   https://www.stackchief.com/blog/ngAfterContentInit%20Example%20%7C%20Angular
