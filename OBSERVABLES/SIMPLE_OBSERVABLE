@@ -1,0 +1,38 @@
+/////////////   ng g s folder/myobservable --flat -m app.module
+
+///////////// APP.MODULE :
+
+import { MyobservableService } from './erase/myobservable.service';
+
+ providers: [ MyobservableService] 
+ 
+///////////  SERVICE : 
+ 
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+@Injectable()
+export class MyobservableService {
+  constructor() { }
+
+  ObsMeth(val: string) {
+
+    return new Observable<string>((subscriber) => {          <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+      subscriber.next('Inside Subscriber1 : ' + val);          <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+      subscriber.next('Inside Subscriber2 : ' + val);          <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+      subscriber.complete();
+    });
+  }
+}
+
+///////////  COMPONENT :
+import { MyobservableService } from './myobservable.service';
+constructor(private mySvc: MyobservableService  ) { }
+
+ngOnInit() {
+
+    this.mySvc.ObsMeth('My Data').subscribe((ret) => {           <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        alert(ret);
+    });
+  }
