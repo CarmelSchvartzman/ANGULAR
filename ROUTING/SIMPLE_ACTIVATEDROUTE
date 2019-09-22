@@ -14,7 +14,7 @@ export class AppRoutingModule { }
 
 
 3////////////// NAVBAR :
- <li><a routerLink="['ActivatedRoute',11]">Activated Route</a></li>          <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<li><a [routerLink]="['/ActivatedRoute',11]">ActivatedRoute</a></li>          <<<<<<<<<<<<<<<<<<< NOTICE THE "[]" BINDING OF routerLink
  
  
 
