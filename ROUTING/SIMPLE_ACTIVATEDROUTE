@@ -1,11 +1,36 @@
-///////////////  CLI :
+1///////////////  CLI :   ng g c erase/activatedRouteSnapshot -t -s --flat -m app.module -d
 
-////////////// NAVBAR :
+2///////////// APP.ROUTING MODULE :
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { ActivatedRouteSnapshotComponent } from './erase/activated-route-snapshot.component';
+const routes: Routes = [  { path: 'ActivatedRoute/:myParam', component: ActivatedRouteSnapshotComponent }  ];        <<<<<<<<<<<<<<<<<<
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
 
 
 
-////////////// COMPONENT :
+3////////////// NAVBAR :
+ <li><a routerLink="['ActivatedRoute',11]">Activated Route</a></li>          <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ 
+ 
 
+4////////////// COMPONENT :
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+@Component({  template: `    <div class="alert alert-info">{{val}}</div>   ` })
+export class ActivatedRouteSnapshotComponent implements OnInit {
+val: string;
+  constructor(private route: ActivatedRoute) { }        <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+  ngOnInit() {
+    this.val = this.route.snapshot.params.myParam;        <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    alert(  this.val); // console.log();
+  }
+}
 
 
 
