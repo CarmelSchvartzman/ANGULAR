@@ -5,6 +5,7 @@ npm install bootstrap@4 --save
 code .
 
 ng serve -o
+ng serve --base-href /emp/
 
 ng g c friends/listFriends --skip-tests true -s -t -m app.module -d
 
