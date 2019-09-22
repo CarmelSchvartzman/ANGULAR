@@ -1,5 +1,7 @@
 ng new MyProject --skip-tests true
 
+ng build -prod --base-href /emp/
+
 npm install bootstrap@4 --save
 
 code .
