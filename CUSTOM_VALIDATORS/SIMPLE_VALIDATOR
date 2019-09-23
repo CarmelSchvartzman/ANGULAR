@@ -1,0 +1,34 @@
+//////////// CLI : ng g d assets/directives/testDirective --flat -m app.module -d
+
+//////////// DIRECTIVE :
+import { Directive } from '@angular/core';
+import { Validator, ValidationErrors, NG_VALIDATORS, AbstractControl } from '@angular/forms';
+
+@Directive({
+  selector: '[appTestDirective]', 
+  providers: [{ provide: NG_VALIDATORS, useExisting: TestDirectiveDirective, multi: true }]      <<<<<<<<<<<<<<<<<<<<<  IMPORTANT
+})
+export class TestDirectiveDirective implements Validator {
+  validate(control: AbstractControl): ValidationErrors {                              <<<<<<<<<<<<<<<<<<<<<
+    return control.value !== '-1' ? null : { NoValue: true };        <<<<<<<<<<<<<<<<<<<<< unshift 'NoValue' to the "ERRORS" array
+  }
+}
+
+
+/////////////  USAGE IN VIEW :
+
+      <div class="form-group" [class.has-error]='city.errors?.NoValue'           <<<<<<<<<<<<<<<<<<<<<  the "ERRORS" array
+                 [class.has-success]='city.valid'>
+        <label class='control-label' for="city">
+          City
+        </label> 
+        <select #city='ngModel'   appTestDirective                                 <<<<<<<<<<<<<<<<<<<<<
+                       class="form-control" name="city" id="city" [(ngModel)]='friend.city'>
+          <option  style='color:rgb(201, 149, 149)' value='-1'>Select a City</option>
+          <option *ngFor='let c of cities' [value]="c.id">{{c.name}}</option>
+        </select>
+        <span class='help-block' *ngIf='city.errors?.NoValue'>                              <<<<<<<<<<<<<<<<<<<<<
+                 Please select a city</span>
+      </div>
+      
+
