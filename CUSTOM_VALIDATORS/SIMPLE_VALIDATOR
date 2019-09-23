@@ -9,7 +9,7 @@ import { Validator, ValidationErrors, NG_VALIDATORS, AbstractControl } from '@an
   providers: [{ provide: NG_VALIDATORS, useExisting: TestDirectiveDirective, multi: true }]      <<<<<<<<<<<<<<<<<<<<<  IMPORTANT
 })
 export class TestDirectiveDirective implements Validator {
-  validate(control: AbstractControl): ValidationErrors {                              <<<<<<<<<<<<<<<<<<<<<
+  validate(control: AbstractControl):  { [key: string]: boolean } | null {    <<<<<<<<<<<<<<<<<<<<< OR :  ValidationErrors | null
     return control.value !== '-1' ? null : { NoValue: true };        <<<<<<<<<<<<<<<<<<<<< unshift 'NoValue' to the "ERRORS" array
   }
 }
