@@ -1,3 +1,4 @@
+////////////////////// CLI : ng g d assets/directives/requiredValidatorDirective --flat -m app.module -d
 ////////////////////// IMAGES :  https://angularjsclub.blogspot.com/2019/09/how-to-create-custom-validator-using.html
 //////////////////////  CUSTOM VALIDATOR :
 
@@ -7,11 +8,11 @@ import { Validator, AbstractControl, ValidationErrors, NG_VALIDATORS } from '@an
 
 @Directive({
   selector: '[appRequiredValidator]',
-  providers: [{ provide: NG_VALIDATORS, useExisting: RequiredValidatorDirective, multi: true }]
+  providers: [{ provide: NG_VALIDATORS, useExisting: RequiredValidatorDirective, multi: true }]   <<<<<<<<<<<<<<<<<
 })
-export class RequiredValidatorDirective implements Validator {
+export class RequiredValidatorDirective implements Validator {  <<<<<<<<<<<<<<<<<
   validate(control: AbstractControl): ValidationErrors {
-    return control.value === '-1' ? { noValueChosen: true } : null;
+    return control.value === '-1' ? { noValueChosen: true } : null;  <<<<<<<<<<<<<<<<<
 
   }
 }
@@ -19,11 +20,12 @@ export class RequiredValidatorDirective implements Validator {
 ///////////////////// HTML VIEW :
 
 
-      <div class="form-group" [class.has-error]='city.errors?.noValueChosen'  [class.has-success]='city.valid'>
+      <div class="form-group" [class.has-error]='city.errors?.noValueChosen'  [class.has-success]='city.valid'>  <<<<<<<<<<<<<<<<<
         <label class='control-label' for="city">
           City
         </label> 
-        <select #city='ngModel'   appRequiredValidator   class="form-control" name="city" id="city" [(ngModel)]='friend.city'>
+        <select #city='ngModel'   appRequiredValidator                                       <<<<<<<<<<<<<<<<<
+                           class="form-control" name="city" id="city" [(ngModel)]='friend.city'>
           <option  style='color:rgb(201, 149, 149)' value='-1'>Select a City</option>
           <option *ngFor='let c of cities' [value]="c.id">{{c.name}}</option>
         </select>
@@ -44,7 +46,7 @@ import { RequiredValidatorDirective } from './shared/required-validator.directiv
 
 @NgModule({
   declarations: [ 
-    RequiredValidatorDirective
+    RequiredValidatorDirective                           <<<<<<<<<<<<<<<<<
   ],
 ............
 
