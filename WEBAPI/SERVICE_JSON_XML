@@ -108,6 +108,45 @@ data: Friend[];
      // let d = JSON.parse(ret);   // IF API SERVER RENDERS JSON STRING !!!
 }
 
+
+/////////////// ANGULAR COMPONENT WITH *ngFor :
+
+import { Component, OnInit } from '@angular/core';
+import { Service191002Service } from './service191002.service';
+import { Friend } from '../models/friends';
+
+@Component({
+  selector: 'app-comp',
+  template: `
+    <select [(ngModel)]='selectedFriend'>
+      <option *ngFor='let f of friends' [(value)]='f.id'> {{f.name}} </option>
+    </select>
+    <br><br><br>
+<div *ngIf='selectedFriend != null'>{{friends[selectedFriend].name}}</div>
+  `,
+  styles: []
+})
+export class CompComponent implements OnInit {
+  friends: Friend[];
+  selectedFriend: number;
+  constructor(private svc: Service191002Service) { }
+
+  ngOnInit() {
+    this.svc.getFriend().subscribe((r) => {
+      console.warn(r['d']); this.friends = r['d'];
+    }, (e) => { console.error(e); });
+
+    this.svc.getCustom('CARME').subscribe((r) => {
+      console.log(r);
+
+    });
+  }
+
+
+
+}
+
+
 ///////////////  APP.MODULE  :
 
 import { HttpClientModule } from '@angular/common/http';    <<<<<<<<<<<<<
