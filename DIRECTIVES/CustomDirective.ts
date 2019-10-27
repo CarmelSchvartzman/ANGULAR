@@ -5,7 +5,7 @@
 import { Directive, Input, ElementRef } from '@angular/core';
 
 @Directive({
-  selector: `[appColored], appColored`
+  selector: `[appColored], appColored`                   <<<<<<<<<<<<<<<<<<<<<<<
 })
 export class ColorDirective {
 
@@ -13,7 +13,7 @@ export class ColorDirective {
 
   @Input() set appColored(color: string) {
 
-    this.elem.nativeElement.style.background = color;
+    this.elem.nativeElement.style.background = color;                   <<<<<<<<<<<<<<<<<<<<<<<
   }
 
 }
