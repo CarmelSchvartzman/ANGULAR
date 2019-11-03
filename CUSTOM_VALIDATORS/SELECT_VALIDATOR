@@ -1,4 +1,4 @@
-////////////////////// CLI : ng g d assets/directives/requiredValidatorDirective --flat --spec=false -m app.module -d
+////////////////////// CLI : ng g d assets/directives/requiredValidatorDirective --flat -m app.module -d
 ////////////////////// IMAGES :  https://angularjsclub.blogspot.com/2019/09/how-to-create-custom-validator-using.html
 //////////////////////  CUSTOM VALIDATOR :
 
