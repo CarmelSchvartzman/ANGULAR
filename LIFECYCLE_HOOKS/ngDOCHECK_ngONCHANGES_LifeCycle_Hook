@@ -2,8 +2,8 @@
 /////// IMPORTANT : ngDoCheck and ngOnChanges should not be implemented together on the same component
 /////////  CLI : 
 /////////
-/////////  ng g c lifecycle/child --flat true -s -t -m app.module -d
-/////////  ng g c lifecycle/parent --flat -t -s -m app.module -d
+/////////  ng g c lifecycle/child --flat true  --skipTests  -s -t -m app.module -d
+/////////  ng g c lifecycle/parent --flat   --skipTests -t -s -m app.module -d
 
 /////////////////  CHILD : 
 
