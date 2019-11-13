@@ -1,0 +1,36 @@
+<table>
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Annual Salary</th>
+            <th>Date of Birth</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let employee of employees;trackBy:trackByEmpCode'>   // <<<<<<<<<<<<<<<<<<<<<
+            <td>{{employee.code}}</td>
+            <td>{{employee.name}}</td>
+            <td>{{employee.gender}}</td>
+            <td>{{employee.annualSalary}}</td>
+            <td>{{employee.dateOfBirth}}</td>
+        </tr>
+        <tr *ngIf="!employees || employees.length==0">
+            <td colspan="5">
+                No employees to display
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<button (click)='getEmployees()'>Refresh Employees</button>
+
+
+///////////////////////////////////////////////////
+
+trackByEmpCode(index: number, employee: any): string {
+    return employee.code;
+}
+
+
