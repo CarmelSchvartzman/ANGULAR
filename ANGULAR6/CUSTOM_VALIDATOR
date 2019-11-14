@@ -1,0 +1,41 @@
+///////   ng g cl shared/CustomValidators --flat -t -s -m app.module -d
+
+import { AbstractControl } from '@angular/forms';
+
+export class CustomValidators {
+
+
+    // function
+    static emailDomain(domainName: string) {
+        return (control: AbstractControl): {} | null => {
+            const email: string = control.value;
+            const domain: string = control.value.substring(control.value.lastIndexOf('@') + 1);
+            if (email === '' || domain.toLowerCase() === domainName) { return null; } else { return { 'emailDomain': true }; }
+
+
+        };
+    }
+
+}
+
+
+//////////////   USAGE :
+
+import {CustomValidators} from '../../shared/custom-validators';
+
+ ngOnInit() {
+    this.employeeForm = this.fb.group({
+      fullName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(10)]],
+      contactPreference: ['email'],
+      email: ['', Validators.required, CustomValidators.emailDomain('github.com')], // <<<<<<<<<<<<<<<<<<<<<<<<<<
+      phone: [''],
+      skills: this.fb.group({
+        skillName: ['', Validators.required],
+        experienceInYears: ['', Validators.required],
+        proficiency: ['', Validators.required]
+      }),
+    });
+}
+
+
+
