@@ -1,0 +1,48 @@
+////////   http://csharp-video-tutorials.blogspot.com/2017/07/angular-component-output-properties.html
+export class EmployeeCountComponent {
+
+    // Holds the selected value of the radio button
+    selectedRadioButtonValue: string = 'All';
+
+    // The Output decorator makes the property an Output property
+    // EventEmitter class is used to create the custom event
+    // When the radio button selection changes, the selected
+    // radio button value which is a string gets passed to the
+    // event handler method. Hence, the event payload is string.
+    @Output()
+    countRadioButtonSelectionChanged: EventEmitter<string> =                       <<<<<<<<<<<<<<<<<<<<
+                                        new EventEmitter<string>();
+
+    // This method raises the custom event. We will bind this
+    // method to the change event of all the 3 radio buttons
+    onRadioButtonSelectionChange() {                                      <<<<<<<<<<<<<<<<<<<<
+        this.countRadioButtonSelectionChanged
+            .emit(this.selectedRadioButtonValue);
+    }
+}
+
+//////////  VIEW :
+
+
+<input name="options" type="radio" value="Male"
+       [(ngModel)]="selectedRadioButtonValue"
+       (change)="onRadioButtonSelectionChange()">       <<<<<<<<<<<<<<<<<<<<
+<span class="radioClass">{{"Male(" + male + ")"}}</span>
+
+<input name="options" type="radio" value="Female"
+       [(ngModel)]="selectedRadioButtonValue"
+       (change)="onRadioButtonSelectionChange()">       <<<<<<<<<<<<<<<<<<<<
+       
+//////// PARENT :
+
+  
+    // This method is called when the child component (EmployeeCountComponent)
+    // raises the custom event - countRadioButtonSelectionChanged
+    
+    onEmployeeCountRadioButtonChange(selectedRadioButtonValue: string): void {
+        this.selectedEmployeeCountRadioButton = selectedRadioButtonValue;
+    }
+    
+<employee-count 
+                (countRadioButtonSelectionChanged)="onEmployeeCountRadioButtonChange($event)">
+</employee-count>
