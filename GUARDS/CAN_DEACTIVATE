@@ -33,5 +33,5 @@ export class CreateFriendComponent implements OnInit {
   
 //////////// APP.MODULE :
 
-
+ providers: [  CreateFriendCanDeactivateGuardService],
 
