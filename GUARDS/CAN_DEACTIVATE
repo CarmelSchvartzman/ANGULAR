@@ -19,5 +19,12 @@ export class CreateFriendCanDeactivateGuardService implements CanDeactivate<Crea
 
 
 
-////////////
+//////////// Template Driven Form :
 
+
+<form #newFriendForm='ngForm' (ngSubmit)='saveFriend()'>
+
+export class CreateFriendComponent implements OnInit {
+  @ViewChild('newFriendForm') createFriendForm: NgForm;
+  
+//////////// 
