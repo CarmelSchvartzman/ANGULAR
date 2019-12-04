@@ -27,4 +27,11 @@ export class CreateFriendCanDeactivateGuardService implements CanDeactivate<Crea
 export class CreateFriendComponent implements OnInit {
   @ViewChild('newFriendForm') createFriendForm: NgForm;
   
-//////////// 
+//////////// APP.ROUTING :
+
+  { path: 'create', component: CreateFriendComponent, canDeactivate: [CreateFriendCanDeactivateGuardService] },
+  
+//////////// APP.MODULE :
+
+
+
