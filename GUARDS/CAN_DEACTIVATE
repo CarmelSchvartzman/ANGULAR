@@ -1,0 +1,23 @@
+import { Injectable } from '@angular/core';
+import { CanDeactivate } from '@angular/router';
+import { CreateFriendComponent } from 'src/app/friends/create-friend.component';
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CreateFriendCanDeactivateGuardService implements CanDeactivate<CreateFriendComponent>{
+  canDeactivate(component: CreateFriendComponent): boolean {
+    if (component.createFriendForm.dirty) {
+      return confirm(`Are you sure to discard your changes on ${component.createFriendForm.name} ?`);
+    }
+    return true;
+  }
+
+  constructor() { }
+}
+
+
+
+////////////
+
