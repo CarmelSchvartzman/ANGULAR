@@ -75,12 +75,12 @@ export class UseSvcComponent implements OnInit {
 
   Load(): void {
     console.warn(this.svc.data);
-    if (!this.svc.data) {
+    if (!this.svc.data) {                           //  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
       this.svc.getData().subscribe((res) => {
         this.friends = res.d; 
-        this.svc.data = this.friends;
+        this.svc.data = this.friends;          //  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
       });
-    } else { this.friends = this.svc.data; }
+    } else { this.friends = this.svc.data; }          //  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   }
 
 }
