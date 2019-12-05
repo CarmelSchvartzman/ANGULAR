@@ -32,21 +32,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class Svc191205Service implements OnInit {
-  public data: Friend[];
-  ngOnInit(): void {
-
-  }
-
+  public data: Friend[];          //  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+  ngOnInit(): void {  }
   constructor(private http: HttpClient) { }
 
   public getData(): Observable<Friend[]> {
-
     return this.http.get<Friend[]>('http://localhost:63878/api/values');
   }
-
 }
-
-
 ///////////////////////////////////
 
 import { Component, OnInit } from '@angular/core';
