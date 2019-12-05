@@ -42,7 +42,7 @@ export class Svc191205Service implements OnInit {
     return this.http.get<Friend[]>('http://localhost:63878/api/values');
   }
 }
-///////////////////////////////////
+///////////////////////////  COMPONENT :
 
 import { Component, OnInit } from '@angular/core';
 import { Svc191205Service } from './svc191205.service';
