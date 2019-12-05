@@ -1,3 +1,5 @@
+//////////////////////  WEBAPI MEMORYCACHE :
+
 using System.Runtime.Caching;           //  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 namespace DELETE191205.Controllers
@@ -21,7 +23,7 @@ namespace DELETE191205.Controllers
         
         
         
-////////////////////////// 
+////////////////////////// SERVICE  CACHED :
 
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -32,7 +34,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class Svc191205Service implements OnInit {
-  public data: Friend[];          //  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+  public data: Friend[];          //  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  CACHED !!!!
   ngOnInit(): void {  }
   constructor(private http: HttpClient) { }
 
