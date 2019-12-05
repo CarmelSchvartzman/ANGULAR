@@ -38,19 +38,19 @@ export class Svc191205Service implements OnInit {
   public data: Friend[];
   ngOnInit(): void {
     if (!this.data) {
-      this.getData().subscribe(res => this.data = res.d);
+      this.getData().subscribe(res => this.data = res.d);           //  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     }
   }
 
   constructor(private http: HttpClient) { }
 
   public getData(): Observable<Friend[]> {
-    return this.http.get<Friend[]>('http://localhost:63878/api/values');
+    return this.http.get<Friend[]>('http://localhost:63878/api/values');           //  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   }
 
   public load(): Friend[] {
     if (!this.data) {
-      this.getData().subscribe(res => { this.data = res.d; return this.data; });
+      this.getData().subscribe(res => { this.data = res.d; return this.data; });           //  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
     } else { return this.data; }
   }
@@ -77,7 +77,6 @@ import { Friend } from '../models/friends';
 })
 export class UseSvcComponent implements OnInit {
   friends: Friend[];
-
   constructor(private svc: Svc191205Service) { }
 
   ngOnInit() {
@@ -90,12 +89,6 @@ export class UseSvcComponent implements OnInit {
 
   Load(): void {
     console.warn(this.svc.data);
-    if (!this.svc.data) {                           //  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-      this.svc.getData().subscribe((res) => {
-        this.friends = res.d; 
-        this.svc.data = this.friends;          //  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-      });
-    } else { this.friends = this.svc.data; }          //  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    this.friends = this.svc.load();           //  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   }
-
 }
