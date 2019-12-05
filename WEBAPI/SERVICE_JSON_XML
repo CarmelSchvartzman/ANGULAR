@@ -35,7 +35,8 @@ public class Friend
        
         public IHttpActionResult Get()
         {
-            var res = new Friend[] { new Friend() { id=0, name="Avi", email="avi@a.a.il"}, new Friend() { id=1,name="Beni", email="beni@b.b.il"} };
+            var res = new Friend[] { new Friend() { id=0, name="Avi", email="avi@a.a.il"}, 
+	    new Friend() { id=1,name="Beni", email="beni@b.b.il"} };
             return Ok(new { d = res});
             // new JavaScriptSerializer().Serialize(res);  <<<<  renders JSON STRING !!
 
