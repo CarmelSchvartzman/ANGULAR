@@ -1,0 +1,26 @@
+import { Component, OnInit } from '@angular/core';
+import { Svc191211Service } from './svc191211.service';
+import { Friend } from '../models/friends';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+
+@Component({
+  selector: 'app-c191211',
+  template: `
+    <p>
+      c191211 works! Parameter = {{parameter}}
+    </p>
+  `,
+  styles: []
+})
+export class C191211Component implements OnInit {
+  friends: Friend[];
+  parameter: number;
+
+  constructor(private svc: Svc191211Service, private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.friends = this.svc.getData();
+    this.route.paramMap.subscribe((d: ParamMap) => { this.parameter = +d.get('id'); });
+  }
+
+}
