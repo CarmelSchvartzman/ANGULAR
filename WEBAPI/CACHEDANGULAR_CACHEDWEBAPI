@@ -14,7 +14,8 @@ namespace DELETE191205.Controllers
 
             if (MemoryCache.Default["a"] == null)           //  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
             {
-                a = new Friend[] { new Friend() { id = 0, name = "Avi", email = "avi@a.a.il" }, new Friend() { id = 1, name = "Beni", email = "beni@b.b.il" } };
+                a = new Friend[] { new Friend() { id = 0, name = "Avi", email = "avi@a.a.il" }, 
+                                new Friend() { id = 1, name = "Beni", email = "beni@b.b.il" } };
                 MemoryCache.Default["a"] = a;           //  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
             }
             a = MemoryCache.Default["a"] as Friend[];           //  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
