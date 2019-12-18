@@ -30,19 +30,14 @@ import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Friend } from '../models/friends';
 import { Observable } from 'rxjs';
-import { IfStmt } from '@angular/compiler';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class Svc191205Service implements OnInit {
+export class Svc191205Service {
   public data: Friend[];
-  ngOnInit(): void {
-    if (!this.data) {
-      this.getData().subscribe(res => this.data = res.d);           //  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-    }
-  }
-
+ 
   constructor(private http: HttpClient) { }
 
   public getData(): Observable<Friend[]> {
