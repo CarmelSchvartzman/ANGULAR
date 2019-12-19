@@ -22,7 +22,34 @@ namespace DELETE191205.Controllers
             return Ok(new { d = a });// Json<Friend[]>( res);
         }
         
-        
+ 
+ //////////////////////// GENERIC HANDLER CACHED :
+ 
+ using System.Runtime.Caching;
+using DELETE191219.Models;
+using System.Web.Script.Serialization;
+namespace DELETE191219.handlers
+{  
+    public class Values : IHttpHandler
+    {
+        private List<Friend> friends;
+        public Values()
+        {
+            if (MemoryCache.Default["list"] == null)
+            {
+                friends =  new List<Friend> { new Friend() { id = 0, name = "Avi", email = "avi@a.a.il" }, 
+                                new Friend() { id = 1, name = "Beni", email = "beni@b.b.il" } };
+                MemoryCache.Default.Add("list", friends, null); 
+            }
+            friends = MemoryCache.Default["list"] as List<Friend>;
+        }
+
+        public void ProcessRequest(HttpContext context)
+        {
+            string so = new JavaScriptSerializer().Serialize(friends);
+            context.Response.ContentType = "text/plain";
+            context.Response.Write(so);
+        }
         
 ////////////////////////// SERVICE  CACHED :
 
