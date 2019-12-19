@@ -88,3 +88,6 @@ export class UseSvcComponent implements OnInit {
     this.friends = this.svc.load();           //  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   }
 }
+
+
+
