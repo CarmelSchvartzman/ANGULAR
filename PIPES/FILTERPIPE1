@@ -25,7 +25,7 @@ export class FriendsFilterPipe implements PipeTransform {
 
 <h1 #h1Variable></h1>
 
-<div *ngFor='let fr of friends | friendsFilter:searchTerm'>
+<div *ngFor='let fr of friends | friendsFilter:searchTerm'>           // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   <div class="well listCursor" (click)='h1Variable.innerHTML =  displayFriend.fnDisplayFriend();onClick(fr.id)'>
     <app-display-friend [f]='fr' #displayFriend></app-display-friend>
     
