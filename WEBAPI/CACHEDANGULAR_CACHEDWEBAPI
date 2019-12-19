@@ -25,9 +25,9 @@ namespace DELETE191205.Controllers
  
  //////////////////////// GENERIC HANDLER CACHED :
  
- using System.Runtime.Caching;
+ using System.Runtime.Caching;          //  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 using DELETE191219.Models;
-using System.Web.Script.Serialization;
+using System.Web.Script.Serialization;          //  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 namespace DELETE191219.handlers
 {  
     public class Values : IHttpHandler
@@ -35,7 +35,7 @@ namespace DELETE191219.handlers
         private List<Friend> friends;
         public Values()
         {
-            if (MemoryCache.Default["list"] == null)
+            if (MemoryCache.Default["list"] == null)          //  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
             {
                 friends =  new List<Friend> { new Friend() { id = 0, name = "Avi", email = "avi@a.a.il" }, 
                                 new Friend() { id = 1, name = "Beni", email = "beni@b.b.il" } };
@@ -46,7 +46,7 @@ namespace DELETE191219.handlers
 
         public void ProcessRequest(HttpContext context)
         {
-            string so = new JavaScriptSerializer().Serialize(friends);
+            string so = new JavaScriptSerializer().Serialize(friends);          //  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
             context.Response.ContentType = "text/plain";
             context.Response.Write(so);
         }
