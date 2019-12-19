@@ -1,3 +1,5 @@
+/////////////  CLI : ng g p assets/pipes/friendsFilter --flat -m app -d
+
 import { Pipe, PipeTransform } from '@angular/core';
 import { Friend } from 'src/app/models/friends';
 
