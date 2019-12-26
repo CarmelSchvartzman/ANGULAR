@@ -87,11 +87,13 @@ import { Friend } from '../models/friends';
 @Component({
   selector: 'app-use-svc',
   template: `
-    <ol *ngFor='let f of friends'>
-        <li>{{f.id}}</li>
-        <li>{{f.name}}</li>
-        <li>{{f.email}}</li>
-        <li>{{f.phoneNumber}}</li>
+    <ol >
+    <li *ngFor='let f of friends'>
+        <div>{{f.id}}</div>
+        <div>{{f.name}}</div>
+        <div>{{f.email}}</div>
+        <div>{{f.phoneNumber}}</div>
+        </li>
     </ol>
     <button class='btn btn-success' (click)='Load()'>Reload</button>
     <button class='btn btn-error' (click)='Reset()'>Reset</button>
