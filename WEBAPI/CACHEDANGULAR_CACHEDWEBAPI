@@ -87,14 +87,25 @@ import { Friend } from '../models/friends';
 @Component({
   selector: 'app-use-svc',
   template: `
-    <ol >
-    <li *ngFor='let f of friends'>
-        <div>{{f.id}}</div>
-        <div>{{f.name}}</div>
-        <div>{{f.email}}</div>
-        <div>{{f.phoneNumber}}</div>
-        </li>
-    </ol>
+    <div class="container">
+  <p class="well">
+     <h3>Employees</h3>
+  </p>
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Employees</div>
+        <div class="panel-body">
+          <div class="form-group">
+            <select class="form-control">
+              <option *ngFor='let f of friends' value="{{f.id}}">{{f.first}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
     <button class='btn btn-success' (click)='Load()'>Reload</button>
     <button class='btn btn-error' (click)='Reset()'>Reset</button>
   `,
