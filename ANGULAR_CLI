@@ -2,6 +2,7 @@ ng new MyProject --skip-tests true
 
 // BUILD:
 ng b --prod --base-href /emp/
+ng b --prod --base-href /t200305/
 
 npm install bootstrap@4 --save
 
