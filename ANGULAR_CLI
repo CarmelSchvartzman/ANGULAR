@@ -5,6 +5,8 @@ ng b --prod --base-href /emp/
 ng b --prod --base-href /t200305/
 
 npm install bootstrap@4 --save
+ng add @angular/material
+
 
 code .
 
@@ -14,7 +16,6 @@ ng serve --base-href /emp/
 ng g c friends/listFriends --skip-tests true -s -t -m app.module -d
 
 ng g cl friends/Friends -m app.module -d
-
 
 
 
