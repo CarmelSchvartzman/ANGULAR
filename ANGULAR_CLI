@@ -7,7 +7,6 @@ ng b --prod --base-href /t200305/
 npm install bootstrap@4 --save
 ng add @angular/material
 
-
 code .
 
 ng serve -o
