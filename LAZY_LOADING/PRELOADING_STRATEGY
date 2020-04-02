@@ -1,0 +1,8 @@
+import { PreloadAllModules, RouterModule } from '@angular/router';
+RouterModule.forRoot(
+[
+ {
+    path: 'second',
+    loadChildren: './second/second.module#SecondModule'
+ } 
+], {preloadingStrategy: PreloadAllModules})             <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
