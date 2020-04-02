@@ -1,4 +1,8 @@
 /////////////////   BLOGGER :  https://angularjsclub.blogspot.com/2019/08/how-to-implement-ngdocheck-from-angular.html
+
+https://medium.com/bb-tutorials-and-thoughts/angular-understanding-angular-lifecycle-hooks-with-a-sample-project-375a61882478
+
+
 /////// IMPORTANT : ngDoCheck and ngOnChanges should not be implemented together on the same component
 /////////  CLI : 
 /////////
