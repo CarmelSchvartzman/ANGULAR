@@ -1,4 +1,6 @@
+npm install -g @angular/cli
 ng new MyProject --skip-tests true
+
 
 // BUILD:
 ng b --prod --base-href /emp/
