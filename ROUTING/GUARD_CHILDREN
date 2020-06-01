@@ -1,0 +1,37 @@
+///  ROUTES.TS :
+
+import { AuthGuard } from './_guards/auth.guard';
+
+
+export const routes: Routes = [
+
+  { path: '', component: HomeComponent },
+  {
+    path: '',
+    runGuardsAndResolvers: 'always',  //  <<<<<<<<<<<<<<<<<<<<<<<<<<<
+    children: [
+    { path: 'lists', component: ListsComponent },
+    { path: 'members', component: MemberListComponent },
+    { path: 'messages', component: MessagesComponent }],
+    canActivate: [AuthGuard]                 //  <<<<<<<<<<<<<<<<<<<<<<<<<<<
+  },
+
+
+  { path: '**', redirectTo: '', pathMatch: 'full' }
+
+];
+
+/////  APP.ROUTING.MODULE :
+
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+
+
+const routes: Routes = [
+
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],  //  <<<<<<<<<<<<<<<<<<<<<<<<<<<
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
