@@ -1,0 +1,17 @@
+//  https://www.npmjs.com/package/ngx-color-picker  
+
+npm install ngx-color-picker --save 
+
+// APP.MODULE:
+
+import { ColorPickerModule } from 'ngx-color-picker'; 
+
+imports: [    ...    ColorPickerModule  ]
+
+
+// HTML:
+<input [(colorPicker)]="color" [style.background]="color"/> 
+ 
+// TS:
+openDialog()                 // Opens the color picker dialog if not already open.
+closeDialog()    
