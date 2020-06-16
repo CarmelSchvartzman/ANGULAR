@@ -1,0 +1,17 @@
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html'
+})
+export class AppComponent implements  AfterViewInit {
+  .....
+    
+  @ViewChild(ColorSampleComponent)                                    //  <<<<<<<<<<<<<<<<<<<<<<<<<<<
+  primarySampleComponent: ColorSampleComponent;
+
+  ngAfterViewInit() {                                             //  <<<<<<<<<<<<<<<<<<<<<<<<<<<
+    console.log('Values on ngAfterViewInit():');
+    console.log("primaryColorSample:", this.primarySampleComponent);
+  }  
+
+  .....
+}
