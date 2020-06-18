@@ -1,0 +1,84 @@
+//////////   SERVICE + CUSTOM OBSERVABLE :
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+
+@Injectable()
+export class TwoSecondsSvcService {
+  data = 'DATA FROM SERVICE';
+
+
+  GetData() {
+    return new Observable<string>((observer) => {               <<<<<<<<<<<<<<<<<<<<<<
+
+      // setTimeout(function() {
+
+        observer.next(this.data + ' RETRIEVED BY SUBSCRIBING!!!');   <<<<<<<<<<<<<<<<<<<<<<
+        observer.complete();                                         <<<<<<<<<<<<<<<<<<<<<<
+     
+
+      // }, 5000);
+
+    });
+  }
+
+
+  constructor() { }
+}
+
+
+
+/////////////  COMPONENT SUBSCRIBING :
+
+import { Component, OnInit } from '@angular/core';
+import { TwoSecondsSvcService } from './two-seconds-svc.service';
+import { DomSanitizer } from '@angular/platform-browser';           <<<<<<<<<<<<<<<<<<<<<<
+import * as $ from 'jquery';
+
+@Component({
+  selector: 'app-cible',
+  template: `
+  
+    <div [innerHTML]='data1' > </div><div id='test'></div>
+    <div class='btn-group'>
+    
+      <button class='btn btn-primary' (click)='fnGetData()' >  Get Data from OBSERVABLE </button>       <<<<<<<<<<<<<<<<<<<<<<
+      
+      <button class='btn btn-primary dropdown-toggle' data-toggle='dropdown'><span class='caret'></span></button>
+      <ul class='dropdown-menu'>
+        <li><a href='#'>One</a></li>
+        <li><a href='#'>Two</a></li>
+        <li><a href='#'>Three</a></li>
+      </ul>
+    </div><script>$('#test').html('JQUERY');</script>
+  `,
+  styles: []
+})
+export class CibleComponent implements OnInit {
+  data1: string;
+
+  constructor(private svc: TwoSecondsSvcService, private san: DomSanitizer) {           <<<<<<<<<<<<<<<<<<<<<<
+    // this.san.bypassSecurityTrustHtml(this.data1);           <<<<<<<<<<<<<<<<<<<<<<
+    // setTimeout(() => {      this.fnDisplay();    }, 10000);
+  }
+
+  ngOnInit() {
+    this.data1 = this.svc.data;
+  }
+
+  fnGetData(): void {
+    this.svc.GetData().subscribe((d) => { this.data1 = d as string; });              <<<<<<<<<<<<<<<<<<<<<<
+
+  }
+
+
+  fnDisplay(): void {
+    this.data1 = `<h2>Cible</h2><div class="panel panel-success" >
+  <div class="panel-heading" >This is a new page :</div>
+  <div class="panel-body" >
+  </div>
+  <div class="panel-footer" ></div>
+  </div>
+  `;
+  }
+}
