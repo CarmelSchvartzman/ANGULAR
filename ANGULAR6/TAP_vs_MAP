@@ -1,0 +1,18 @@
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.5.5/rxjs.umd.min.js"></script>
+
+<script>
+const {of} = rxjs;
+const {map, tap} = rxjs.operators;
+
+const inc = n => n + 1;
+
+
+const a$ = of(10).pipe(tap(n => console.log(`tap: ${n}`)));
+const b$ = of(10).pipe(map(inc));
+
+a$.subscribe(n => console.log(`n from a$: ${n}`));
+b$.subscribe(n => console.log(`n from b$: ${n}`));
+
+
+</script>
