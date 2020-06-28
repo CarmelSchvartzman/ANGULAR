@@ -1,4 +1,3 @@
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.5.5/rxjs.umd.min.js"></script>
 
 <script>
@@ -13,6 +12,14 @@ const b$ = of(10).pipe(map(inc));
 
 a$.subscribe(n => console.log(`n from a$: ${n}`));
 b$.subscribe(n => console.log(`n from b$: ${n}`));
+
+const f = n => {
+	setTimeout(()=>{n.subscribe(x=>console.log(x));},3000);
+
+};
+
+
+f(b$);
 
 
 </script>
