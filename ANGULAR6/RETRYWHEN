@@ -1,0 +1,21 @@
+////   https://stackoverflow.com/questions/51905963/retry-http-requests-in-angular-6
+
+
+.pipe(
+    tap((ev: HttpEvent<any>) => {
+        if (ev instanceof HttpResponse) {
+            console.log('###processing response', ev, this.location);
+        }
+    }),
+    retryWhen(errors => errors
+        .pipe(
+            concatMap((error, count) => {
+                if (count < 5 && (error.status == 400 || error.status == 0)) {
+                    return Observable.of(error.status);
+                }
+
+                return observableThrowError(error);
+            }),
+            delay(1000)
+        )
+    ),
