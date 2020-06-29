@@ -1,0 +1,18 @@
+<div *ngIf='photos$ | async as photos'></div>
+
+<div *ngFor='let photo of photos'>
+   <img src='{{photo.url}}' class='img-thumbnail p-1' />
+
+</div>
+
+
+
+////////////////////////  TS :
+
+photos$ = Observable<Photo[]>;
+
+ngOnInit(){
+
+    const params = new HttpParams().set("page","1").set("pageSize","10");
+    this.photos$ = this.httpClient.get<Photo[]>('https://jsonplaceholder.typicode.com/posts',{params});
+}
