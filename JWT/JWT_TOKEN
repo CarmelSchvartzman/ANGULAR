@@ -1,0 +1,58 @@
+/////    HTTPS://JWT.IO     (debugger)
+
+
+                   HEADER:ALGORITHM & TOKEN TYPE
+                    {
+                    "alg": "HS512",
+                    "typ": "JWT"
+                    }
+                    
+                    
+                    PAYLOAD:DATA                    
+                    {
+                    "nameid": "1",                  <<<<<<<<<<<<<<<<<<<<<<
+                    "unique_name": "someuser",                <<<<<<<<<<<<<<<<<<<<<<
+                    "nbf": 1592714953,
+                    "exp": 1592801353,
+                    "iat": 1592714953
+                    }
+                    
+                    
+                    
+                    VERIFY SIGNATURE
+                    HMACSHA512(
+                    base64UrlEncode(header) + "." +
+                    base64UrlEncode(payload),
+
+                    your-256-bit-secret
+
+                    ) secret base64 encoded
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+HEADER:ALGORITHM & TOKEN TYPE
+
+{
+  "alg": "HS512",
+  "typ": "JWT"
+}
+PAYLOAD:DATA
+{
+  "nameid": "1",
+  "unique_name": "lola",
+  "nbf": 1593494555,
+  "exp": 1593580955,
+  "iat": 1593494555
+}
+VERIFY SIGNATURE
+
+HMACSHA512(
+  base64UrlEncode(header) + "." +
+  base64UrlEncode(payload),
+  
+your-256-bit-secret
+
+) secret base64 encoded
+
