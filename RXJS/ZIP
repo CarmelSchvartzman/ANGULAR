@@ -1,0 +1,29 @@
+type Color = 'white' | 'green' | 'red' | 'blue';
+type Logo = 'fish' | 'dog' | 'bird' | 'cow';
+
+const color$ = new Subject<Color>();
+const logo$ = new Subject<Logo>();
+
+color$.next('white');
+logo$.next('fish');
+
+color$.next('green');
+logo$.next('dog');
+
+color$.next('red');
+logo$.next('bird');
+
+color$.next('blue');
+
+zip(color$, logo$)
+    .subscribe(([color, logo]) => console.log(`${color} shirt with ${logo}`));   //  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  1 - 1 
+    
+    
+    ///////////////  CONSOLE :
+    
+    1. white shirt with fish
+2. green shirt with dog
+3. red shirt with bird
+    
+    
+    
