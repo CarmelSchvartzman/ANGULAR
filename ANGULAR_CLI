@@ -18,6 +18,8 @@ ng g c friends/listFriends --skip-tests true -s -t -m app.module -d
 
 ng g cl friends/Friends -m app.module -d
 
+//  UPDATE   :  https://update.angular.io/#7.0:8.0
+ng update @angular/cli@8 @angular/core@8
 
 
 
