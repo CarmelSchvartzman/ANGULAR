@@ -6,3 +6,5 @@ npm cache verify
 
 ng update rxjs
 	
+/////////   https://update.angular.io
+ng update @angular/cli@8 @angular/core@8
