@@ -1,4 +1,5 @@
-VERSION #5 :
+///  https://auth0.com/blog/whats-new-in-angular5/  
+VERSION #5 :    
 
 -Http Deprecated, HttpClient Here to Stay:  JSON is an assumed default  - Interceptors allow middleware logic to be inserted into the pipeline - Progress events
 
