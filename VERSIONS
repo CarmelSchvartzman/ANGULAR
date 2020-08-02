@@ -1,0 +1,32 @@
+VERSION #5 :
+
+-Http Deprecated, HttpClient Here to Stay:  JSON is an assumed default  - Interceptors allow middleware logic to be inserted into the pipeline - Progress events
+
+-Multiple Export Alias:    exportAs:'dashboard, logBoard'
+             
+-Improved Decorator: WITH useValue, useFactory, and data : a lambda can be used instead of a named function like so:  provider: [{provide: 'token', useFactory: () => null}]
+
+-Forms Validation: forms now have the ability to decide when the validity and value of a field or form are updated via on blur or on submit, instead of every input event:
+  <input name="nickName" ngModel [ngModelOptions]="{updateOn: 'blur'}">
+  <form [ngFormOptions]="{updateOn: 'submit'}">
+   In the case of Reactive forms:
+   ngOnInit() {
+     this.newUserForm = this.fb.group({
+    userName: ['Bob', { updateOn: 'blur', validators: [Validators.required] }]
+     });}
+     
+-Animations in Angular 5: new transition aliases, :increment and :decrement
+-New Router Lifecycle Events in Angular 5: GuardsCheckStart, ChildActivationStart, ActivationStart, GuardsCheckEnd, ResolveStart, ResolveEnd, ActivationEnd, and ChildActivationEnd
+-Better Support for Service Workers in Angular 5: @angular/service-worker
+
+
+VERSION #6:
+
+
+
+
+
+
+
+
+
