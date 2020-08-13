@@ -1,0 +1,31 @@
+//////   AppComponent :
+function Unsub() {
+    return function(constructor) {
+        const orig = constructor.prototype.ngOnDestroy
+        constructor.prototype.ngOnDestroy = function() {
+            for(const prop in this) {
+                const property = this[prop]
+                if(typeof property.subscribe === "function") {
+                    property.unsubscribe()
+                }
+            }
+            orig.apply()
+        }
+    }
+}
+
+
+////////////    USAGE :
+
+
+@Component({
+    ...
+})
+@Unsub
+export class AppComponent implements OnInit {
+    observable$
+    ngOnInit () {
+        this.observable$ = Rx.Observable.interval(1000);
+        this.observable$.subscribe(x => console.log(x))
+    }
+}
