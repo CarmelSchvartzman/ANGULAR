@@ -15,7 +15,7 @@
 export class AppComponent implements OnInit {
 
     @ViewChild('defaultTabButtons')       <<<<<<<<<<<<<<<<
-    private defaultTabButtonsTpl: TemplateRef<any>;
+    private defaultTabButtonsTpl: TemplateRef<any>;     <<<<<<<  TEMPLATE REF  !!!!!
 
     ngOnInit() {
         console.log(this.defaultTabButtonsTpl);       <<<<<<<<<<<<<<<<
