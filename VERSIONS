@@ -1,3 +1,18 @@
+//// CREATE NEW PROJECT WITH OLDER VERSION:   
+/////      https://redgreenrepeat.com/2019/11/22/learning-angular-installing-previous-versions/#:~:text=There%20is%20a%20way%20to,%2Fcli%40%20.
+npm install @angular/cli@7        
+ng --version                      //  = 7.0.0
+ng new OldAngularVersion
+
+////  Tabla de older versions :
+Angular 4	= npm install @angular/cli@1.4
+Angular 5	= 	npm install @angular/cli@1.7
+Angular 6	= 	npm install @angular/cli@6
+Angular 7	= 	npm install @angular/cli@7
+Angular 8	= 	npm install @angular/cli@8
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  Fin de  CREATE NEW PROJECT WITH OLDER VERSION
+
+
 ///  https://auth0.com/blog/whats-new-in-angular5/  
 VERSION #5 :    
 
