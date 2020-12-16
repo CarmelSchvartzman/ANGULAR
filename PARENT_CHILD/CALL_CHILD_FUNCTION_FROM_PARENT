@@ -1,0 +1,24 @@
+/////  CHILD :
+getPublications(page, adding = false) {}
+
+
+
+
+///// PARENT :
+ <h1  >{{title}}
+        <button class="btn btn-default" (click)='refresh($event)'>Mostrar Nuevas</button>
+    </h1>
+    <app-publications #publications></app-publications>
+
+
+@ViewChild('publications') compPublications;
+
+ ngAfterViewInit(): void {
+    this.compPublications.getPublications(this.page);
+  }
+  
+  
+  refresh(event) {
+   
+    this.compPublications.getPublications(1);
+  }
